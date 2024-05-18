@@ -366,3 +366,197 @@ end Behavioral;
 <!-- <p align="center">
   <img src="./pics/xor1.png">
 </p> -->
+
+### Behavioral Style
++ Logical AND gate
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity andgate is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           y : out  STD_LOGIC);
+end andgate;
+
+architecture Behavioral of andgate is
+
+begin
+	process(a,b)
+	variable temp:STD_LOGIC:='0';
+		begin
+			if(a = '1' and b= '1')then
+				temp := '1';
+			else
+				temp := '0';
+		end if;
+		y <= temp;
+	end process;
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ Logical OR gate
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity orgate is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           y : out  STD_LOGIC);
+end orgate;
+
+architecture Behavioral of orgate is
+
+begin
+	process(a,b)
+	variable temp:STD_LOGIC:='0';
+		begin
+			if(a = '0' and b= '0')then
+				temp := '0';
+			else
+				temp := '1';
+		end if;
+		y <= temp;
+	end process;
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ Logical XOR gate
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity xorgate is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           y : out  STD_LOGIC);
+end xorgate;
+
+architecture Behavioral of xorgate is
+
+begin
+	process(a,b)
+	variable temp:STD_LOGIC:='0';
+		begin
+			if(a = b)then
+				temp := '0';
+			else
+				temp := '1';
+		end if;
+		y <= temp;
+	end process;
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 4 X 1 Multiplexer
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity multiplexer is
+    Port ( i : in  STD_LOGIC_VECTOR(3 downto 0);
+           s : in  STD_LOGIC_VECTOR(1 downto 0);
+           y : out  STD_LOGIC);
+end multiplexer;
+
+architecture Behavioral of multiplexer is
+
+begin
+	process(s,i)
+	variable temp:STD_LOGIC:='0';
+		begin
+			if(s = "00")then
+				y <= i(0);
+            elsif(s = "01")then
+				y <= i(1);
+            elsif(s = "10")then
+				y <= i(2);
+			else
+				y <= i(3);
+		end if;
+	end process;
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 3 : 8 ddecoder
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity decoder is
+    Port ( i : in  STD_LOGIC_VECTOR(3 downto 0);
+           y : out  STD_LOGIC_VECTOR(1 downto 0));
+end decoder;
+
+architecture Behavioral of decoder is
+
+begin
+	process(i)
+	variable temp:STD_LOGIC:='0';
+		begin
+			if(i = "000")then
+				y <= "00000001";
+            if(i = "001")then
+				y <= "00000010";
+            if(i = "010")then
+				y <= "00000100";
+            if(i = "011")then
+				y <= "00001000";
+            if(i = "100")then
+				y <= "00010000";
+            if(i = "101")then
+				y <= "00100000";
+            if(i = "110")then
+				y <= "01000000";
+			else
+				y <= "10000000";
+		end if;
+	end process;
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
