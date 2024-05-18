@@ -28,4 +28,6 @@ VHDL supports the follwing coding conventions:-
 
 # Components of VHDL code
 
-<img src="./pics/components.png" height=300>
+<p align="center">
+  <img src="./pics/components.png" height=300 width=400>
+</p>
