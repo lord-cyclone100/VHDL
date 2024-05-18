@@ -65,6 +65,304 @@ y <= a and b;
 end Behavioral;
 ```
 
-<p align="center">
+<!-- <p align="center">
   <img src="./pics/and1.png">
-</p>
+</p> -->
+<br><br>
++ Logical OR
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity orgate is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           y : out  STD_LOGIC);
+end orgate;
+
+architecture Behavioral of orgate is
+
+begin
+
+y <= a or b;
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/or1.png">
+</p> -->
+<br><br>
+
++ Logical XOR
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity xorgate is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           y : out  STD_LOGIC);
+end xorgate;
+
+architecture Behavioral of xorgate is
+
+begin
+
+y <= a xor b;
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ Half Adder
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity halfadder is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           s : out  STD_LOGIC;
+           cout : out  STD_LOGIC);
+end halfadder;
+
+architecture Behavioral of halfadder is
+
+begin
+
+s <= a xor b;
+cout <= a and b;
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ Half Subtractor
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity halfsubtractor is
+    Port ( a : in  STD_LOGIC;
+           b : in  STD_LOGIC;
+           d : out  STD_LOGIC;
+           bout : out  STD_LOGIC);
+end halfsubtractor;
+
+architecture Behavioral of halfsubtractor is
+
+begin
+
+d <= a xor b;
+bout <= (not a) and b;
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ Full Adder
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity fulladder is
+    Port ( a : in  STD_LOGIC_VECTOR(2 downto 0);
+           y : out  STD_LOGIC_VECTOR(1 downto 0));
+end fulladder;
+
+architecture Behavioral of fulladder is
+
+begin
+
+y(1) <= a(2) xor a(1) xor a(0);
+y(0) <= (a(2) and a(1)) or ((a(2) xor a(1)) and a(0));
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ Full Subtractor
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity fullsubtractor is
+    Port ( a : in  STD_LOGIC_VECTOR(2 downto 0);
+           y : out  STD_LOGIC_VECTOR(1 downto 0));
+end fullsubtractor;
+
+architecture Behavioral of fullsubtractor is
+
+begin
+
+y(1) <= a(2) xor a(1) xor a(0);
+y(0) <= (a(2) and a(1)) or ((a(2) xor a(1)) and a(0));
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 2 X 1 Multiplexer
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity mux is
+    Port ( a : in  STD_LOGIC_VECTOR (1 downto 0);
+           s : in  STD_LOGIC;
+           o : out  STD_LOGIC);
+end mux;
+
+architecture Behavioral of mux is
+
+begin
+
+o <= ((not s) and a(0))or(s and a(1));
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 4 X 1 Multiplexer
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity mux is
+    Port ( a : in  STD_LOGIC_VECTOR (3 downto 0);
+           s : in  STD_LOGIC_VECTOR(1 downto 0);
+           o : out  STD_LOGIC);
+end mux;
+
+architecture Behavioral of mux is
+
+begin
+
+o <= ((not s(0)) and (not s(1)) and a(0)) or 
+((not s(0)) and s(1) and a(1)) or 
+((not s(0)) and (not s(1)) and a(2)) or
+(s(0) and s(1) and a(3));
+
+end Behavioral;
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 2 : 4 Decoder
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity decoder is
+    Port ( a : in  STD_LOGIC_VECTOR (1 downto 0);
+           o : out  STD_LOGIC_VECTOR (3 downto 0));
+end decoder;
+
+architecture Behavioral of decoder is
+
+begin
+
+o(0) <= ((not a(0)) and (not a(1)));
+o(1) <= ((not a(0)) and a(1));
+o(2) <= (a(0) and (not a(1)));
+o(3) <= (a(0) and a(1));
+
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 3 : 8 Decoder
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity decoder is
+    Port ( a : in  STD_LOGIC_VECTOR (2 downto 0);
+           o : out  STD_LOGIC_VECTOR (7 downto 0));
+end decoder;
+
+architecture Behavioral of decoder is
+
+begin
+
+o(0) <= ((not a(0)) and (not a(1)) and (not a(2)));
+o(1) <= ((not a(0)) and (not a(1)) and a(2));
+o(2) <= ((not a(0)) and a(1) and (not a(2)));
+o(3) <= ((not a(0)) and a(1) and a(2));
+o(4) <= (a(0) and (not a(1)) and (not a(2)));
+o(5) <= (a(0) and (not a(1)) and a(2));
+o(6) <= (a(0) and a(1) and (not a(2)));
+o(7) <= (a(0) and a(1) and a(2));
+
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
