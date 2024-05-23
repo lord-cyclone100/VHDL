@@ -515,7 +515,58 @@ end Behavioral;
   <img src="./pics/xor1.png">
 </p> -->
 <br><br>
-+ 3 : 8 ddecoder
++ 1 X 8 Demultiplexer
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity demultiplexer is
+    Port ( a : in  STD_LOGIC;
+           s : in  STD_LOGIC_VECTOR (2 downto 0);
+           y : out  STD_LOGIC_VECTOR (7 downto 0));
+end demultiplexer;
+
+architecture Behavioral of demultiplexer is
+
+begin
+	process(a,s)
+	begin
+		if(a='1')then
+			if(s="000")then
+				y<="00000001";
+			elsif(s="001")then
+				y<="00000010";
+			elsif(s="010")then
+				y<="00000100";
+			elsif(s="011")then
+				y<="00001000";
+			elsif(s="100")then
+				y<="00010000";
+			elsif(s="101")then
+				y<="00100000";
+			elsif(s="110")then
+				y<="01000000";
+			else
+				y<="10000000";
+			end if;
+		else
+			y<="00000000";
+		end if;
+	end process;
+end Behavioral;
+
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
++ 3 : 8 decoder
 
 **CODE:**
 ```vhdl
