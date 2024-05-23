@@ -768,9 +768,9 @@ variable temp:std_logic:='0';
 begin
 	if(CLK = '1' and CLK'event)then
 		if(T='0')then
-			temp:='1';
+			temp:=temp;
 		elsif(T='1')then
-			temp:='0';
+			temp:=not(temp);
 		else
 			temp:='Z';
 		end if;
