@@ -612,6 +612,43 @@ end Behavioral;
   <img src="./pics/xor1.png">
 </p> -->
 <br><br>
++ 4 : 2 encoder
+
+**CODE:**
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity encoder is
+    Port ( a : in  STD_LOGIC_VECTOR (3 downto 0);
+           y : out  STD_LOGIC_VECTOR (1 downto 0));
+end encoder;
+
+architecture Behavioral of encoder is
+
+begin
+	process(a)
+		begin
+			if(a(0)='1')then
+				y <= "00";
+			elsif(a(1)='1')then
+				y <= "01";
+			elsif(a(2)='1')then
+				y <= "10";
+			else
+				y <= "11";
+		end if;
+	end process;
+end Behavioral;
+
+```
+
+<!-- <p align="center">
+  <img src="./pics/xor1.png">
+</p> -->
+<br><br>
 + SR FLip Flop
 
 **CODE:**
